@@ -24,6 +24,15 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				'gaming-green': 'hsl(var(--gaming-green))',
+				'gaming-green-glow': 'hsl(var(--gaming-green-glow))',
+				'gaming-dark': 'hsl(var(--gaming-dark))',
+				'gaming-card': 'hsl(var(--gaming-card))',
+				'gaming-accent': 'hsl(var(--gaming-accent))',
+				'status-success': 'hsl(var(--status-success))',
+				'status-warning': 'hsl(var(--status-warning))',
+				'status-error': 'hsl(var(--status-error))',
+				'status-info': 'hsl(var(--status-info))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
