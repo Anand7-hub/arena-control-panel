@@ -37,10 +37,7 @@ const AdminLayout = () => {
             {/* Logo */}
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-3">
-                <div className="relative">
-                  <Sparkles className="h-8 w-8 text-gaming-green animate-pulse-green" />
-                  <div className="absolute inset-0 h-8 w-8 text-gaming-green animate-glow"></div>
-                </div>
+                <Sparkles className="h-8 w-8 text-gaming-green" />
                 <h1 className="text-3xl font-bold text-gaming-green text-glow">GAME CENTRE</h1>
               </div>
               <div className="h-8 w-px bg-gaming-green/30"></div>

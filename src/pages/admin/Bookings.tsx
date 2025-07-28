@@ -140,7 +140,7 @@ const Bookings = () => {
             Current Active Bookings
           </TabsTrigger>
           <TabsTrigger value="otp" className="data-[state=active]:bg-gaming-green data-[state=active]:text-black">
-            OTP Verification Required
+            Upcoming Bookings
           </TabsTrigger>
           <TabsTrigger value="history" className="data-[state=active]:bg-gaming-green data-[state=active]:text-black">
             All Bookings History

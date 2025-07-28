@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Users, Calendar, DollarSign, TrendingUp, Clock, Computer } from "lucide-react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const Dashboard = () => {
+  const [timeframe, setTimeframe] = useState("week");
+  const [chartType, setChartType] = useState("line");
   const stats = [
     { 
       title: "Total Bookings", 
@@ -35,14 +39,23 @@ const Dashboard = () => {
     },
   ];
 
-  const revenueData = [
-    { day: "Mon", revenue: 1200 },
-    { day: "Tue", revenue: 1800 },
-    { day: "Wed", revenue: 1500 },
-    { day: "Thu", revenue: 2200 },
-    { day: "Fri", revenue: 3200 },
-    { day: "Sat", revenue: 3800 },
-    { day: "Sun", revenue: 2800 },
+  const weeklyData = [
+    { period: "Mon", revenue: 1200 },
+    { period: "Tue", revenue: 1800 },
+    { period: "Wed", revenue: 1500 },
+    { period: "Thu", revenue: 2200 },
+    { period: "Fri", revenue: 3200 },
+    { period: "Sat", revenue: 3800 },
+    { period: "Sun", revenue: 2800 },
+  ];
+
+  const monthlyData = [
+    { period: "Jan", revenue: 45000 },
+    { period: "Feb", revenue: 52000 },
+    { period: "Mar", revenue: 48000 },
+    { period: "Apr", revenue: 61000 },
+    { period: "May", revenue: 55000 },
+    { period: "Jun", revenue: 58000 },
   ];
 
   const recentBookings = [
@@ -80,6 +93,75 @@ const Dashboard = () => {
       amount: "₹50"
     }
   ];
+
+  const getCurrentData = () => {
+    return timeframe === "month" ? monthlyData : weeklyData;
+  };
+
+  const renderChart = () => {
+    const data = getCurrentData();
+    
+    switch (chartType) {
+      case "area":
+        return (
+          <AreaChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+            <XAxis dataKey="period" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+            <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+            <Tooltip contentStyle={{
+              backgroundColor: "hsl(var(--gaming-card))",
+              border: "1px solid hsl(var(--border))",
+              borderRadius: "8px",
+              color: "hsl(var(--foreground))"
+            }} />
+            <Area 
+              type="monotone" 
+              dataKey="revenue" 
+              stroke="hsl(var(--gaming-green))" 
+              fill="hsl(var(--gaming-green))" 
+              fillOpacity={0.3}
+            />
+          </AreaChart>
+        );
+      case "bar":
+        return (
+          <BarChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+            <XAxis dataKey="period" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+            <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+            <Tooltip contentStyle={{
+              backgroundColor: "hsl(var(--gaming-card))",
+              border: "1px solid hsl(var(--border))",
+              borderRadius: "8px",
+              color: "hsl(var(--foreground))"
+            }} />
+            <Bar dataKey="revenue" fill="hsl(var(--gaming-green))" />
+          </BarChart>
+        );
+      default:
+        return (
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+            <XAxis dataKey="period" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+            <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+            <Tooltip contentStyle={{
+              backgroundColor: "hsl(var(--gaming-card))",
+              border: "1px solid hsl(var(--border))",
+              borderRadius: "8px",
+              color: "hsl(var(--foreground))"
+            }} />
+            <Line 
+              type="monotone" 
+              dataKey="revenue" 
+              stroke="hsl(var(--gaming-green))" 
+              strokeWidth={3}
+              dot={{ fill: "hsl(var(--gaming-green))", strokeWidth: 2, r: 4 }}
+              activeDot={{ r: 6, stroke: "hsl(var(--gaming-green))", strokeWidth: 2 }}
+            />
+          </LineChart>
+        );
+    }
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -141,43 +223,32 @@ const Dashboard = () => {
               </p>
             </div>
             <div className="flex gap-2">
-              <Badge variant="secondary" className="bg-status-success text-black">Week</Badge>
-              <Badge variant="outline" className="border-gaming-green text-gaming-green">Month</Badge>
-              <Badge variant="outline" className="border-gaming-green text-gaming-green">Year</Badge>
+              <Select value={timeframe} onValueChange={setTimeframe}>
+                <SelectTrigger className="w-32 bg-gaming-accent border-border">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-gaming-card border-border">
+                  <SelectItem value="week">This Week</SelectItem>
+                  <SelectItem value="month">6 Months</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select value={chartType} onValueChange={setChartType}>
+                <SelectTrigger className="w-32 bg-gaming-accent border-border">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-gaming-card border-border">
+                  <SelectItem value="line">Line Chart</SelectItem>
+                  <SelectItem value="area">Area Chart</SelectItem>
+                  <SelectItem value="bar">Bar Chart</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </CardHeader>
         <CardContent>
           <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={revenueData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis 
-                  dataKey="day" 
-                  stroke="hsl(var(--muted-foreground))"
-                  fontSize={12}
-                />
-                <YAxis 
-                  stroke="hsl(var(--muted-foreground))"
-                  fontSize={12}
-                />
-                <Tooltip 
-                  contentStyle={{
-                    backgroundColor: "hsl(var(--gaming-card))",
-                    border: "1px solid hsl(var(--border))",
-                    borderRadius: "8px",
-                    color: "hsl(var(--foreground))"
-                  }}
-                />
-                <Line 
-                  type="monotone" 
-                  dataKey="revenue" 
-                  stroke="hsl(var(--gaming-green))" 
-                  strokeWidth={3}
-                  dot={{ fill: "hsl(var(--gaming-green))", strokeWidth: 2, r: 4 }}
-                  activeDot={{ r: 6, stroke: "hsl(var(--gaming-green))", strokeWidth: 2 }}
-                />
-              </LineChart>
+              {renderChart()}
             </ResponsiveContainer>
           </div>
         </CardContent>

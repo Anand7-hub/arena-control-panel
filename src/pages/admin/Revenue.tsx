@@ -61,10 +61,10 @@ const Revenue = () => {
   ];
 
   const revenueByCategory = [
-    { name: "Gaming Sessions", value: 1650, color: "#00ff00" },
-    { name: "Events & Tournaments", value: 420, color: "#00cc00" },
-    { name: "Food & Beverages", value: 180, color: "#009900" },
-    { name: "Merchandise", value: 58, color: "#006600" },
+    { name: "Gaming Sessions", value: 1650, color: "hsl(var(--gaming-green))" },
+    { name: "Events & Tournaments", value: 420, color: "hsl(120, 100%, 35%)" },
+    { name: "Food & Beverages", value: 180, color: "hsl(120, 100%, 25%)" },
+    { name: "Merchandise", value: 58, color: "hsl(120, 100%, 15%)" },
   ];
 
   const topPerformers = [
