@@ -1,73 +1,55 @@
-# Welcome to your Lovable project
+Description
+Arena Control Panel is a web-based dashboard designed for managing, monitoring, and controlling activities within an arena environment. Built with a modern tech stack, it features responsive UI, fast performance, and customizable controls for streamlined operational management.
 
-## Project info
+Arena Control Panel
+A fast, modern dashboard for arena management and control.
 
-**URL**: https://lovable.dev/projects/31f19876-2886-466b-8ba3-afac5b4f18bd
+Tech Stack
+Vite
 
-## How can I edit this code?
+TypeScript
 
-There are several ways of editing your application.
+React
 
-**Use Lovable**
+shadcn-ui
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/31f19876-2886-466b-8ba3-afac5b4f18bd) and start prompting.
+Tailwind CSS
 
-Changes made via Lovable will be committed automatically to this repo.
+Features
+Interactive and responsive control panel UI
 
-**Use your preferred IDE**
+Real-time status monitoring
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+User management and access controls
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Expandable architecture for new arena features
 
-Follow these steps:
+Getting Started
+1. Edit in Lovable
+Open the Lovable project and edit with prompts.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+Changes are auto-committed to the repo.
+
+2. Local Development
+text
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+cd arena-control-panel
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
-```
+Requires Node.js & npm.
 
-**Edit a file directly in GitHub**
+3. Edit on GitHub
+Go to the file you want to edit.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Click the pencil icon, make changes, and commit.
 
-**Use GitHub Codespaces**
+4. GitHub Codespaces
+Click Code > Codespaces > New codespace for instant cloud development.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Deployment
+In Lovable, click Share → Publish to deploy.
 
-## What technologies are used for this project?
+Custom Domain
+In Lovable: Project > Settings > Domains > Connect Domain
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/31f19876-2886-466b-8ba3-afac5b4f18bd) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Full Guide
